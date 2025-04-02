@@ -11,14 +11,18 @@ A simple, reusable Accordion component built with React. It demonstrates:
 
 Replace this placeholder with a link or embedded video showcasing the Accordion's functionality.
 
-[![Demo Video](https://via.placeholder.com/640x360.png?text=Demo+Video)](#)
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/1ebcf0da-97d7-40f5-95b6-9a453b73c62b" controls width="600">
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+</div>
 
 ## Installation
 
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/ceferrei/accordion-component-react.git
+git clone [repository-url]
 ```
 
 2. Navigate to the project directory:
