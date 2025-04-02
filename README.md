@@ -1,22 +1,59 @@
-import "./App.css";
-import { useState } from "react";
+# React Accordion Component
+
+A simple, reusable Accordion component built with React. It demonstrates:
+
+- Splitting UI into smaller, reusable components.
+- Managing state with the `useState` hook.
+- Passing content through the `children` prop.
+- Handling user interactions to expand and collapse items.
+
+## Demo
+
+Replace this placeholder with a link or embedded video showcasing the Accordion's functionality.
+
+[![Demo Video](https://via.placeholder.com/640x360.png?text=Demo+Video)](#)
+
+## Installation
+
+1. Clone this repository:
+
+```bash
+git clone https://github.com/ceferrei/accordion-component-react.git
+```
+
+2. Navigate to the project directory:
+
+```
+cd accordion-component
+```
+
+3. Install dependencies:
+
+```
+npm install
+```
+
+4. Start the development server:
+
+```
+npm start
+```
+
+Usage
+Use or modify the existing Accordion and AccordionItem components to suit your needs. Customize the faqs array or add additional items as desired.
+
+```javascript
+import Accordion from "./Accordion"; // Adjust the path as necessary
 
 const faqs = [
   {
     title: "What is React State?",
     text: "State in React allows components to manage and update their own data, triggering re-renders when changes occur. It's crucial for dynamic UIs.",
   },
-  {
-    title: "What are React Props?",
-    text: "Props (short for properties) are used to pass data from a parent component to a child component. They are read-only and immutable.",
-  },
-  {
-    title: "What is Component Composition?",
-    text: "Component composition is a pattern where you build complex UIs by combining simpler components, promoting reusability and maintainability.",
-  },
+  // ... more items
 ];
 
-export default function App() {
+function App() {
   return (
     <div>
       <Accordion data={faqs} />
@@ -24,53 +61,9 @@ export default function App() {
   );
 }
 
-function Accordion({ data }) {
-  const [curOpen, setIsCurOpen] = useState(null);
+export default App;
+```
 
-  return (
-    <div className="accordion">
-      {data.map((el, i) => (
-        <AccordionItem
-          curOpen={curOpen}
-          onOpen={setIsCurOpen}
-          title={el.title}
-          num={i}
-          key={el.title}
-        >
-          {el.text}
-        </AccordionItem>
-      ))}
-      <AccordionItem
-        curOpen={curOpen}
-        onOpen={setIsCurOpen}
-        title="Understanding Lifting State Up"
-        num={22}
-        key="test 1"
-      >
-        <p>Lifting state up allows React developers to:</p>
-        <ul>
-          <li>Share state between sibling components.</li>
-          <li>Manage state in a common ancestor.</li>
-          <li>Improve component communication.</li>
-        </ul>
-      </AccordionItem>
-    </div>
-  );
-}
+## License
 
-function AccordionItem({ curOpen, onOpen, num, title, children }) {
-  const isOpen = num === curOpen;
-
-  function handleToggle() {
-    onOpen(isOpen ? null : num);
-  }
-
-  return (
-    <div className={`item ${isOpen ? "open" : ""}`} onClick={handleToggle}>
-      <p className="number">{num < 9 ? `0${num + 1}` : num + 1}</p>
-      <p className="title">{title}</p>
-      <p className="icon">{isOpen ? "-" : "+"}</p>
-      {isOpen && <div className="content-box">{children}</div>}
-    </div>
-  );
-}
+This project is licensed under the MIT License.
