@@ -28,7 +28,7 @@ git clone https://github.com/ceferrei/accordion-component-react.git
 2. Navigate to the project directory:
 
 ```
-cd accordion-component
+cd accordion-component-react
 ```
 
 3. Install dependencies:
