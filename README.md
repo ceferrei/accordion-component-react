@@ -22,7 +22,7 @@ Replace this placeholder with a link or embedded video showcasing the Accordion'
 1. Clone this repository:
 
 ```bash
-git clone [repository-url]
+git clone https://github.com/ceferrei/accordion-component-react.git
 ```
 
 2. Navigate to the project directory:
