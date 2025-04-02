@@ -3,16 +3,16 @@ import { useState } from "react";
 
 const faqs = [
   {
-    title: "Where are these chairs assembled?",
-    text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium, quaerat temporibus quas dolore provident nisi ut aliquid ratione beatae sequi aspernatur veniam repellendus.",
+    title: "What is React State?",
+    text: "State in React allows components to manage and update their own data, triggering re-renders when changes occur. It's crucial for dynamic UIs.",
   },
   {
-    title: "How long do I have to return my chair?",
-    text: "Pariatur recusandae dignissimos fuga voluptas unde optio nesciunt commodi beatae, explicabo natus.",
+    title: "What are React Props?",
+    text: "Props (short for properties) are used to pass data from a parent component to a child component. They are read-only and immutable.",
   },
   {
-    title: "Do you ship to countries outside the EU?",
-    text: "Excepturi velit laborum, perspiciatis nemo perferendis reiciendis aliquam possimus dolor sed! Dolore laborum ducimus veritatis facere molestias!",
+    title: "What is Component Composition?",
+    text: "Component composition is a pattern where you build complex UIs by combining simpler components, promoting reusability and maintainability.",
   },
 ];
 
@@ -25,20 +25,44 @@ export default function App() {
 }
 
 function Accordion({ data }) {
+  const [curOpen, setIsCurOpen] = useState(null);
+
   return (
     <div className="accordion">
       {data.map((el, i) => (
-        <AccordionItem title={el.title} text={el.text} num={i} key={el.title} />
+        <AccordionItem
+          curOpen={curOpen}
+          onOpen={setIsCurOpen}
+          title={el.title}
+          num={i}
+          key={el.title}
+        >
+          {el.text}
+        </AccordionItem>
       ))}
+      <AccordionItem
+        curOpen={curOpen}
+        onOpen={setIsCurOpen}
+        title="Understanding Lifting State Up"
+        num={22}
+        key="test 1"
+      >
+        <p>Lifting state up allows React developers to:</p>
+        <ul>
+          <li>Share state between sibling components.</li>
+          <li>Manage state in a common ancestor.</li>
+          <li>Improve component communication.</li>
+        </ul>
+      </AccordionItem>
     </div>
   );
 }
 
-function AccordionItem({ num, title, text }) {
-  const [isOpen, setIsOpen] = useState(false);
+function AccordionItem({ curOpen, onOpen, num, title, children }) {
+  const isOpen = num === curOpen;
 
   function handleToggle() {
-    setIsOpen((isOpen) => !isOpen);
+    onOpen(isOpen ? null : num);
   }
 
   return (
@@ -46,7 +70,7 @@ function AccordionItem({ num, title, text }) {
       <p className="number">{num < 9 ? `0${num + 1}` : num + 1}</p>
       <p className="title">{title}</p>
       <p className="icon">{isOpen ? "-" : "+"}</p>
-      {isOpen && <div className="content-box">{text}</div>}
+      {isOpen && <div className="content-box">{children}</div>}
     </div>
   );
 }
