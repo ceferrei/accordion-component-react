@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif; /* Fonte moderna */
   color: #343a40;
   line-height: 1;
 }
@@ -16,6 +16,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .item {
@@ -25,7 +28,7 @@ body {
   cursor: pointer;
   border-top: 4px solid #fff;
   border-bottom: 4px solid #fff;
-
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: grid;
   grid-template-columns: auto 1fr auto;
   column-gap: 24px;
@@ -34,28 +37,39 @@ body {
 }
 
 .number {
-  font-size: 24px;
-  font-weight: 500;
-  color: #ced4da;
+  font-size: 20px;
+  font-weight: 600;
+  color: #6c757d; /* Cor mais suave para o número */
 }
 
 .title,
 .icon {
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .content-box {
   grid-column: 2 / -1;
   padding-bottom: 16px;
   line-height: 1.6;
+  transform-origin: top;
+  transition: max-height 0.3s ease-in-out; /* Transição suave */
+  max-height: 0;
+  overflow: hidden;
+}
+
+.open .content-box {
+  max-height: 500px; /* Ajuste conforme necessário */
+}
+
+.item:hover {
+  background-color: #f0f0f0; /* Efeito de hover */
 }
 
 .content-box ul {
   color: #868e96;
   margin-left: 16px;
   margin-top: 16px;
-
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -63,10 +77,11 @@ body {
 
 /* OPEN STATE */
 .open {
-  border-top: 4px solid #087f5b;
+  border-top: 4px solid #007bff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .open .number,
 .open .title {
-  color: #087f5b;
+  color: #007bff; /* Cor vibrante para o item aberto */
 }
